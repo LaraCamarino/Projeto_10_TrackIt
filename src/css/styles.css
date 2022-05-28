@@ -1,0 +1,30 @@
+* {
+    box-sizing: border-box;
+    
+}
+
+body {
+    font-family: 'Lexend Deca', sans-serif;
+}
+
+header {
+    width: 375px;
+    height: 70px;
+    padding: 10px 18px;
+    background-color: #126BA5;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    font-size: 38px;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Playball', cursive;
+
+}
+
+.profile  {
+    width: 51px;
+    height: 51px;
+    border-radius: 98.5px;
+    background-color: black;
+}
