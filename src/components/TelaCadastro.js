@@ -54,7 +54,7 @@ export default function TelaCadastro() {
                     <Input type="password" placeholder="senha" value={cadastro.senha} onChange={(e) => setCadastro({ ...cadastro, senha: e.target.value })} ></Input>
                     <Input type="text" placeholder="nome" value={cadastro.nome} onChange={(e) => setCadastro({ ...cadastro, nome: e.target.value })} ></Input>
                     <Input type="text" placeholder="foto" value={cadastro.foto} onChange={(e) => setCadastro({ ...cadastro, foto: e.target.value })} ></Input>
-                    <button onClick={fazerCadastro}>Cadastrar</button>
+                    <Botao onClick={fazerCadastro}>Cadastrar</Botao>
                 </>
             )
         }
@@ -65,7 +65,7 @@ export default function TelaCadastro() {
                     <Input type="password" placeholder="senha" value={cadastro.senha} onChange={(e) => setCadastro({ ...cadastro, senha: e.target.value })} disabled={true}></Input>
                     <Input type="text" placeholder="nome" value={cadastro.nome} onChange={(e) => setCadastro({ ...cadastro, nome: e.target.value })} disabled={true}></Input>
                     <Input type="text" placeholder="foto" value={cadastro.foto} onChange={(e) => setCadastro({ ...cadastro, foto: e.target.value })} disabled={true}></Input>
-                    <button onClick={fazerCadastro} disabled={true}><ThreeDots width={51} height={13} color="#FFFFFF" /></button>
+                    <Botao onClick={fazerCadastro} disabled={true}><ThreeDots width={51} height={13} color="#FFFFFF" /></Botao>
                 </>
             )
         }
@@ -96,20 +96,20 @@ const Container = styled.div`
     img {
         margin-bottom: 35px;
     }
+`
 
-    button {
-        width: 303px;
-        height: 45px;
-        background-color: #52B6FF;
-        border-radius: 5px;
-        border: 0px;
-        font-size: 20px;
-        color: #FFFFFF;
-        margin-bottom: 25px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+const Botao = styled.button`
+    width: 303px;
+    height: 45px;
+    background-color: ${props => props.disabled ? "#75c5ff" : "#52B6FF"};
+    border-radius: 5px;
+    border: 0px;
+    font-size: 20px;
+    color: #FFFFFF;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
 `
 
 const Input = styled.input`
@@ -120,6 +120,7 @@ const Input = styled.input`
     padding: 10px;
     margin-bottom: 5px;
     font-size: 18px;
+    background-color: ${props => props.disabled ? "#F2F2F2" : "#FFFFFF"};
 
     ::placeholder {
         color: #DBDBDB;

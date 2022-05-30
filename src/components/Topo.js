@@ -26,6 +26,7 @@ const Container = styled.div`
     align-items: center;
     position: fixed;
     top: 0;
+    z-index: 1;
         
     h1 {
         font-size: 38px;

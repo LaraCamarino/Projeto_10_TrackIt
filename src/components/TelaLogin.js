@@ -52,7 +52,7 @@ export default function TelaLogin() {
                 <>
                     <Input type="email" placeholder="email" value={login.email} onChange={(e) => setLogin({ ...login, email: e.target.value })} ></Input>
                     <Input type="password" placeholder="senha" value={login.senha} onChange={(e) => setLogin({ ...login, senha: e.target.value })}></Input>
-                    <button onClick={fazerLogin}>Entrar</button>
+                    <Botao onClick={fazerLogin}>Entrar</Botao>
                 </>
             )
         }
@@ -61,7 +61,7 @@ export default function TelaLogin() {
                 <>
                     <Input type="email" placeholder="email" value={login.email} onChange={(e) => setLogin({ ...login, email: e.target.value })} disabled={true} ></Input>
                     <Input type="password" placeholder="senha" value={login.senha} onChange={(e) => setLogin({ ...login, senha: e.target.value })} disabled={true} ></Input>
-                    <button onClick={fazerLogin} disabled={true} ><ThreeDots width={51} height={13} color="#FFFFFF" /></button>
+                    <Botao onClick={fazerLogin} disabled={true} ><ThreeDots width={51} height={13} color="#FFFFFF" /></Botao>
                 </>
             )
         }
@@ -91,21 +91,22 @@ const Container = styled.div`
     img {
         margin-bottom: 35px;
     }
-
-    button {
-        width: 303px;
-        height: 45px;
-        background-color: #52B6FF;
-        border-radius: 5px;
-        border: 0px;
-        font-size: 20px;
-        color: #FFFFFF;
-        margin-bottom: 25px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
 `
+
+const Botao = styled.button`
+    width: 303px;
+    height: 45px;
+    background-color: ${props => props.disabled ? "#75c5ff" : "#52B6FF"};
+    border-radius: 5px;
+    border: 0px;
+    font-size: 20px;
+    color: #FFFFFF;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
+
 const Input = styled.input`
     width: 303px;
     height: 45px;
@@ -114,6 +115,7 @@ const Input = styled.input`
     padding: 10px;
     margin-bottom: 5px;
     font-size: 18px;
+    background-color: ${props => props.disabled ? "#F2F2F2" : "#FFFFFF"};
 
     ::placeholder {
         color: #DBDBDB;

@@ -49,6 +49,7 @@ const Container = styled.div`
     align-items: center;
     position: fixed;
     bottom: 0;
+    z-index: 1;
 
     span {
         color: #52B6FF;

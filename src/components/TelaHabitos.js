@@ -20,6 +20,7 @@ export default function TelaHabitos() {
 
     const [abrir, setAbrir] = useState(false);
     const [meusHabitos, setMeusHabitos] = useState([]);
+    const [novoHabito, setNovoHabito] = useState("");
 
     function pegarHabitos() {
         const promise = axios.get(URL, config);
@@ -110,7 +111,7 @@ export default function TelaHabitos() {
                 </CaixaTopo>
 
                 {
-                    abrir ? <CriarHabito setAbrir={setAbrir} pegarHabitos={() => pegarHabitos()} />
+                    abrir ? <CriarHabito setAbrir={setAbrir} pegarHabitos={() => pegarHabitos()} novoHabito={novoHabito} setNovoHabito={setNovoHabito}/>
                         :
                         <></>
                 }
@@ -171,6 +172,8 @@ const MeuHabito = styled.div`
     h1 {
         font-size: 20px;
         margin-bottom: 8px;
+        word-break: break-word;
+        width: 90%;
     }
 `
 const Dias = styled.div`

@@ -26,7 +26,6 @@ export default function TelaHoje() {
         promise.then((response) => {
             let progressoAtual = [];
             setHabitosHoje(response.data);
-            console.log(response.data);
             for (let i = 0; i < response.data.length; i++) {
                 if (response.data[i].done) {
                     progressoAtual.push(response.data[i].id);
@@ -142,7 +141,6 @@ export default function TelaHoje() {
 }
 
 const Container = styled.div`
-    height: 100vh;
     background-color: #E5E5E5;
     margin: 75px 0px;
     padding: 28px 18px;
@@ -163,7 +161,6 @@ const Porcento = styled.p`
 `
 
 const CaixaHabito = styled.div`
-    height: 94px;
     background-color: #FFFFFF;
     border-radius: 5px;
     padding: 13px 15px;
@@ -172,10 +169,15 @@ const CaixaHabito = styled.div`
     justify-content: space-between;
     align-items: center;
 
+    span {
+        width: 75%;
+    }
+
     h2 {
         color: #666666;
         font-size: 20px;
         margin-bottom: 7px;
+        word-break: break-word;        
     }
 `
 

@@ -5,7 +5,7 @@ import UserContext from "../contexts/UserContext";
 import { ThreeDots } from 'react-loader-spinner';
 
 
-export default function CriarHabito({ setAbrir, pegarHabitos }) {
+export default function CriarHabito({ setAbrir, pegarHabitos, novoHabito, setNovoHabito }) {
     const { usuario } = useContext(UserContext);
     const URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits";
     const config = {
@@ -15,8 +15,8 @@ export default function CriarHabito({ setAbrir, pegarHabitos }) {
     };
 
     const [diasSelecionados, setDiasSelecionados] = useState([]);
-    const [novoHabito, setNovoHabito] = useState("");
     const [loading, setLoading] = useState(false);
+    
 
     function botaoSalvar() {
         if (diasSelecionados.length > 0 && novoHabito.length > 0) {
@@ -32,6 +32,7 @@ export default function CriarHabito({ setAbrir, pegarHabitos }) {
                 console.log(response.data);
                 setLoading(false);
                 setAbrir(false);
+                setNovoHabito("");
                 pegarHabitos();
             });
 
@@ -129,6 +130,7 @@ const Input = styled.input`
     padding: 10px;
     font-family: 'Lexend Deca', sans-serif;
     font-size: 18px;
+    background-color: ${props => props.disabled ? "#F2F2F2" : "#FFFFFF"};
 
     ::placeholder {
         color: #DBDBDB;
@@ -169,7 +171,7 @@ const Cancelar = styled.button`
 const Salvar = styled.button`
     padding: 7px 17px;
     font-size: 16px;
-    background-color: #52B6FF;
+    background-color: ${props => props.disabled ? "#75c5ff" : "#52B6FF"};
     color: #FFFFFF;
     border-radius: 5px;
     border: 0px;
