@@ -35,13 +35,11 @@ const Container = styled.div`
 
 const CaixaDia = styled.div`
     margin-bottom: 28px;
-
     h1 {
         color: #126BA5;
         font-size: 23px;
         margin-bottom: 5px;
     }
-
     p {
         color: #BABABA;
         font-size: 18px;
@@ -58,13 +56,11 @@ const CaixaHabito = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     h2 {
         color: #666666;
         font-size: 20px;
         margin-bottom: 7px;
     }
-
     p {
         color: #666666;
         font-size: 12px;
@@ -80,7 +76,6 @@ const CheckMark = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-
     img {
         width: 35px;
         height: 28px;

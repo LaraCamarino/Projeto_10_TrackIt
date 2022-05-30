@@ -1,14 +1,104 @@
-import axios from "axios";
-//import { Link } from "react-router-dom";
-import { useState, useContext, useEffect } from "react";
 import styled from "styled-components";
+import axios from "axios";
+import { useState, useContext, useEffect } from "react";
 import UserContext from "../contexts/UserContext";
-
 
 import Topo from "./Topo";
 import Menu from "./Menu";
+import CriarHabito from "./CriarHabito";
+import Trash from "../assets/trash.png";
+
 
 export default function TelaHabitos() {
+    const { usuario } = useContext(UserContext);
+    const URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits";
+    const config = {
+        headers: {
+            "Authorization": `Bearer ${usuario.token}`
+        }
+    };
+
+    const [abrir, setAbrir] = useState(false);
+    const [meusHabitos, setMeusHabitos] = useState([]);
+
+    function pegarHabitos() {
+        const promise = axios.get(URL, config);
+
+        promise.then((response) => {
+            setMeusHabitos(response.data);
+        });
+        promise.catch((err) => console.log(err.response));
+    }
+
+    function abrirCaixa() {
+        setAbrir(true);
+    }
+
+    useEffect(() => pegarHabitos(), []);
+
+
+    function ListarHabitos() {
+
+        function Habito({ nome, id, dias }) {
+            const semana = [
+                { dia: "D", selecionado: "" },
+                { dia: "S", selecionado: "" },
+                { dia: "T", selecionado: "" },
+                { dia: "Q", selecionado: "" },
+                { dia: "Q", selecionado: "" },
+                { dia: "S", selecionado: "" },
+                { dia: "S", selecionado: "" },
+            ]
+
+            function deletarHabito(id) {
+                if (window.confirm("Você deseja realmente excluir este hábito?")) {
+                    const promise = axios.delete(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}`, config);
+                    promise.then(() => pegarHabitos());
+                    promise.catch((err) => console.log(err.response));
+                }
+            }
+
+            function corBotoesDias() {
+                for (let i = 0; i < 7; i++) {
+                    if (dias.includes(i)) {
+                        semana[i].selecionado = true;
+                    } else {
+                        semana[i].selecionado = false;
+                    }
+                }
+                return semana;
+            }
+
+            return (
+                <MeuHabito>
+                    <h1>{nome}</h1>
+                    <Dias>
+                        {
+                            corBotoesDias().map((item, index) => <Dia key={index} selecionado={item.selecionado} >{item.dia}</Dia>)
+                        }
+                    </Dias>
+                    <Deletar>
+                        <img src={Trash} alt="" onClick={() => deletarHabito(id)}></img>
+                    </Deletar>
+                </MeuHabito>
+            )
+        }
+
+        if (meusHabitos.length === 0) {
+            return (
+                <p>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</p>
+            )
+        }
+
+        return (
+            <>
+                {
+                    meusHabitos.map((item, index) => <Habito key={index} nome={item.name} id={item.id} dias={item.days} />)
+                }
+            </>
+        )
+
+    }
 
     return (
         <>
@@ -16,17 +106,28 @@ export default function TelaHabitos() {
             <Container>
                 <CaixaTopo>
                     <h1>Meus hábitos</h1>
-                    <button>+</button>
+                    <button onClick={abrirCaixa}>+</button>
                 </CaixaTopo>
-                
+
+                {
+                    abrir ? <CriarHabito setAbrir={setAbrir} pegarHabitos={() => pegarHabitos()} />
+                        :
+                        <></>
+                }
+
                 <CaixaHabitos>
 
+                    <ListarHabitos />
+
                 </CaixaHabitos>
+
             </Container>
+
             <Menu />
         </>
     )
 }
+
 
 const Container = styled.div`
     margin: 75px 0px;

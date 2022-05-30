@@ -29,7 +29,6 @@ export default function TelaCadastro() {
                 password: cadastro.senha
             });
             promise.then(response => {
-                console.log(response.data);
                 navigate("/");
             })
             promise.catch(err => {

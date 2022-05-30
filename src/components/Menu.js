@@ -6,7 +6,7 @@ import 'react-circular-progressbar/dist/styles.css';
 import UserContext from "../contexts/UserContext";
 
 export default function Menu() {
-    const { progresso } = useContext(UserContext);
+    const { porcentagem } = useContext(UserContext);
 
     return (
         <Container>
@@ -16,7 +16,7 @@ export default function Menu() {
             <StyledLink to="/hoje">
                 <Circulo>
                     <CircularProgressbar
-                        value={progresso}
+                        value={porcentagem}
                         text={"Hoje"}
                         background={true}
                         backgroundPadding={6}
@@ -25,7 +25,7 @@ export default function Menu() {
                             textColor: "#FFFFFF",
                             pathColor: "#FFFFFF",
                             pathTransitionDuration: 0.5,
-                            trailColor: "#FFFFFF",
+                            trailColor: "#52B6FF",
                             backgroundColor: "#52B6FF",
                         })}
                     />

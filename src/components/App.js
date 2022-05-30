@@ -12,10 +12,11 @@ import TelaHistorico from './TelaHistorico';
 export default function App() {
 
     const [usuario, setUsuario] = useState({});
-    const [progresso, setProgresso] = useState();
-
+    const [progresso, setProgresso] = useState([]);
+    const [porcentagem, setPorcentagem] = useState(0);
+    
     return (
-        <UserContext.Provider value={{ usuario, setUsuario, progresso, setProgresso }}>
+        <UserContext.Provider value={{ usuario, setUsuario, progresso, setProgresso, porcentagem, setPorcentagem }}>
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<TelaLogin />} ></Route>
