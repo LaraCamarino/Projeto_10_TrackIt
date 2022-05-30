@@ -25,7 +25,9 @@ export default function TelaHoje() {
 
         promise.then((response) => {
             let progressoAtual = [];
-            setHabitosHoje(response.data);
+            if (response.data.length > 0) {
+                setHabitosHoje(response.data);
+            }
             for (let i = 0; i < response.data.length; i++) {
                 if (response.data[i].done) {
                     progressoAtual.push(response.data[i].id);
@@ -103,11 +105,10 @@ export default function TelaHoje() {
         )
     }
 
-
     function PorcentagemProgresso() {
         let porcento = Math.round((progresso.length / habitosHoje.length) * 100);
         setPorcentagem(porcento);
-
+       
         if (progresso.length === 0 || isNaN(porcento)) {
             return (
                 <Porcento feito={false}>Nenhum hábito concluído ainda</Porcento>
