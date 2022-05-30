@@ -1,13 +1,16 @@
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import styled from "styled-components";
+
+import UserContext from "../contexts/UserContext";
 
 import { ThreeDots } from 'react-loader-spinner';
 import Logo from "../assets/logo.png"
 
 export default function TelaLogin() {
     const navigate = useNavigate();
+    const { setUsuario } = useContext(UserContext);
 
     const [loading, setLoading] = useState(false);
     const [login, setLogin] = useState({
@@ -24,10 +27,12 @@ export default function TelaLogin() {
                 email: login.email,
                 password: login.senha
             });
+
             promise.then(response => {
-                console.log(response.data);
+                setUsuario(response.data);
                 navigate("/hoje");
             })
+
             promise.catch(err => {
                 alert(err.response.data.message);
                 console.log(err.response);
@@ -81,6 +86,7 @@ const Container = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #FFFFFF;
 
     img {
         margin-bottom: 35px;

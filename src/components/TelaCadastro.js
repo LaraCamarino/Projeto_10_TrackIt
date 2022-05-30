@@ -92,6 +92,7 @@ const Container = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #FFFFFF;
 
     img {
         margin-bottom: 35px;
