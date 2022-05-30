@@ -24,11 +24,13 @@ export default function TelaHoje() {
         const promise = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today", config);
 
         promise.then((response) => {
+            let progressoAtual = [];
             setHabitosHoje(response.data);
             console.log(response.data);
-            for(let i = 0; i < response.data.length; i++) {
-                if(response.data[i].done) {
-                    setProgresso([...progresso, response.data[i].id]);
+            for (let i = 0; i < response.data.length; i++) {
+                if (response.data[i].done) {
+                    progressoAtual.push(response.data[i].id);
+                    setProgresso([...progressoAtual]);
                 }
             }
         });

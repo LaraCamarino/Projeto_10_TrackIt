@@ -50,8 +50,8 @@ export default function TelaLogin() {
         if (!loading) {
             return (
                 <>
-                    <input type="email" placeholder="email" value={login.email} onChange={(e) => setLogin({ ...login, email: e.target.value })} ></input>
-                    <input type="password" placeholder="senha" value={login.senha} onChange={(e) => setLogin({ ...login, senha: e.target.value })}></input>
+                    <Input type="email" placeholder="email" value={login.email} onChange={(e) => setLogin({ ...login, email: e.target.value })} ></Input>
+                    <Input type="password" placeholder="senha" value={login.senha} onChange={(e) => setLogin({ ...login, senha: e.target.value })}></Input>
                     <button onClick={fazerLogin}>Entrar</button>
                 </>
             )
@@ -59,8 +59,8 @@ export default function TelaLogin() {
         else {
             return (
                 <>
-                    <input type="email" placeholder="email" value={login.email} onChange={(e) => setLogin({ ...login, email: e.target.value })} disabled={true} ></input>
-                    <input type="password" placeholder="senha" value={login.senha} onChange={(e) => setLogin({ ...login, senha: e.target.value })} disabled={true} ></input>
+                    <Input type="email" placeholder="email" value={login.email} onChange={(e) => setLogin({ ...login, email: e.target.value })} disabled={true} ></Input>
+                    <Input type="password" placeholder="senha" value={login.senha} onChange={(e) => setLogin({ ...login, senha: e.target.value })} disabled={true} ></Input>
                     <button onClick={fazerLogin} disabled={true} ><ThreeDots width={51} height={13} color="#FFFFFF" /></button>
                 </>
             )
@@ -92,19 +92,6 @@ const Container = styled.div`
         margin-bottom: 35px;
     }
 
-    input {
-        width: 303px;
-        height: 45px;
-        border-radius: 5px;
-        border: 1px solid #D4D4D4;   
-        margin-bottom: 5px;
-    }
-
-    &::placeholder {
-        color: #DBDBDB;
-        font-size: 20px;
-    }
-
     button {
         width: 303px;
         height: 45px;
@@ -119,6 +106,21 @@ const Container = styled.div`
         align-items: center;
     }
 `
+const Input = styled.input`
+    width: 303px;
+    height: 45px;
+    border-radius: 5px;
+    border: 1px solid #D4D4D4;   
+    padding: 10px;
+    margin-bottom: 5px;
+    font-size: 18px;
+
+    ::placeholder {
+        color: #DBDBDB;
+        font-size: 18px;
+    }
+`
+
 const StyledLink = styled(Link)`
     color: #52B6FF;
 `

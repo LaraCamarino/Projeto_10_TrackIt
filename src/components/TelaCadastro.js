@@ -50,10 +50,10 @@ export default function TelaCadastro() {
         if (!loading) {
             return (
                 <>
-                    <input type="email" placeholder="email" value={cadastro.email} onChange={(e) => setCadastro({ ...cadastro, email: e.target.value })} ></input>
-                    <input type="password" placeholder="senha" value={cadastro.senha} onChange={(e) => setCadastro({ ...cadastro, senha: e.target.value })} ></input>
-                    <input type="text" placeholder="nome" value={cadastro.nome} onChange={(e) => setCadastro({ ...cadastro, nome: e.target.value })} ></input>
-                    <input type="text" placeholder="foto" value={cadastro.foto} onChange={(e) => setCadastro({ ...cadastro, foto: e.target.value })} ></input>
+                    <Input type="email" placeholder="email" value={cadastro.email} onChange={(e) => setCadastro({ ...cadastro, email: e.target.value })} ></Input>
+                    <Input type="password" placeholder="senha" value={cadastro.senha} onChange={(e) => setCadastro({ ...cadastro, senha: e.target.value })} ></Input>
+                    <Input type="text" placeholder="nome" value={cadastro.nome} onChange={(e) => setCadastro({ ...cadastro, nome: e.target.value })} ></Input>
+                    <Input type="text" placeholder="foto" value={cadastro.foto} onChange={(e) => setCadastro({ ...cadastro, foto: e.target.value })} ></Input>
                     <button onClick={fazerCadastro}>Cadastrar</button>
                 </>
             )
@@ -61,10 +61,10 @@ export default function TelaCadastro() {
         else {
             return (
                 <>
-                    <input type="email" placeholder="email" value={cadastro.email} onChange={(e) => setCadastro({ ...cadastro, email: e.target.value })} disabled={true}></input>
-                    <input type="password" placeholder="senha" value={cadastro.senha} onChange={(e) => setCadastro({ ...cadastro, senha: e.target.value })} disabled={true}></input>
-                    <input type="text" placeholder="nome" value={cadastro.nome} onChange={(e) => setCadastro({ ...cadastro, nome: e.target.value })} disabled={true}></input>
-                    <input type="text" placeholder="foto" value={cadastro.foto} onChange={(e) => setCadastro({ ...cadastro, foto: e.target.value })} disabled={true}></input>
+                    <Input type="email" placeholder="email" value={cadastro.email} onChange={(e) => setCadastro({ ...cadastro, email: e.target.value })} disabled={true}></Input>
+                    <Input type="password" placeholder="senha" value={cadastro.senha} onChange={(e) => setCadastro({ ...cadastro, senha: e.target.value })} disabled={true}></Input>
+                    <Input type="text" placeholder="nome" value={cadastro.nome} onChange={(e) => setCadastro({ ...cadastro, nome: e.target.value })} disabled={true}></Input>
+                    <Input type="text" placeholder="foto" value={cadastro.foto} onChange={(e) => setCadastro({ ...cadastro, foto: e.target.value })} disabled={true}></Input>
                     <button onClick={fazerCadastro} disabled={true}><ThreeDots width={51} height={13} color="#FFFFFF" /></button>
                 </>
             )
@@ -97,19 +97,6 @@ const Container = styled.div`
         margin-bottom: 35px;
     }
 
-    input {
-        width: 303px;
-        height: 45px;
-        border-radius: 5px;
-        border: 1px solid #D4D4D4;   
-        margin-bottom: 5px;
-    }
-
-    &::placeholder {
-        color: #DBDBDB;
-        font-size: 20px;
-    }
-
     button {
         width: 303px;
         height: 45px;
@@ -122,6 +109,21 @@ const Container = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+`
+
+const Input = styled.input`
+    width: 303px;
+    height: 45px;
+    border-radius: 5px;
+    border: 1px solid #D4D4D4;   
+    padding: 10px;
+    margin-bottom: 5px;
+    font-size: 18px;
+
+    ::placeholder {
+        color: #DBDBDB;
+        font-size: 18px;
     }
 `
 
